@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Little Aygo | Mohamad Alzein</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#0b1120;
+    --card:#111827;
+    --card2:#1f2937;
+    --accent:#38bdf8;
+    --accent2:#06b6d4;
+    --text:#f8fafc;
+    --muted:#94a3b8;
+    --border:rgba(255,255,255,.08);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+.container{
+    width:min(1100px,90%);
+    margin:auto;
+}
+
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(10px);
+    background:rgba(11,17,32,.75);
+    border-bottom:1px solid var(--border);
+}
+
+.nav-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 0;
+}
+
+.logo{
+    font-size:1.3rem;
+    font-weight:700;
+    color:var(--accent);
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+}
+
+.nav-links a:hover{
+    color:var(--accent);
+}
+
+.hero{
+    min-height:80vh;
+    display:flex;
+    align-items:center;
+    padding:140px 0 90px;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.eyebrow{
+    color:var(--accent);
+    font-weight:600;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    margin-bottom:18px;
+}
+
+h1{
+    font-size:clamp(3rem,8vw,6rem);
+    line-height:.95;
+    margin-bottom:30px;
+}
+
+.hero p{
+    color:var(--muted);
+    font-size:1.2rem;
+    line-height:1.9;
+    max-width:800px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:35px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 24px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:white;
+}
+
+.btn-secondary{
+    border:1px solid var(--border);
+    color:white;
+    background:rgba(255,255,255,.03);
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+section{
+    padding:90px 0;
+}
+
+.section-title{
+    margin-bottom:35px;
+}
+
+.section-title h2{
+    font-size:2.6rem;
+    margin-bottom:12px;
+}
+
+.section-title p{
+    color:var(--muted);
+}
+
+.story{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:30px;
+}
+
+.card h3{
+    margin-bottom:15px;
+    font-size:1.4rem;
+}
+
+.card p{
+    color:var(--muted);
+    line-height:1.8;
+}
+
+.highlight{
+    border-left:3px solid var(--accent);
+}
+
+.tech{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+}
+
+.tag{
+    background:rgba(56,189,248,.15);
+    color:var(--accent);
+    padding:7px 13px;
+    border-radius:20px;
+    font-size:.85rem;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+}
+
+.placeholder{
+    min-height:280px;
+    overflow:hidden;
+    border:1px dashed rgba(56,189,248,.35);
+    border-radius:18px;
+    background:
+        linear-gradient(135deg,rgba(56,189,248,.05),rgba(6,182,212,.02)),
+        var(--card);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:25px;
+    color:var(--muted);
+    transition:.3s;
+}
+
+.placeholder:hover{
+    transform:translateY(-5px);
+    border-color:var(--accent);
+}
+
+.placeholder span{
+    display:block;
+    color:var(--accent);
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+.video-placeholder{
+    min-height:430px;
+}
+
+.download{
+    text-align:center;
+    padding:60px 30px;
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border);
+    border-radius:25px;
+}
+
+.download h2{
+    font-size:2.5rem;
+    margin-bottom:15px;
+}
+
+.download p{
+    color:var(--muted);
+    max-width:650px;
+    margin:0 auto 30px;
+    line-height:1.8;
+}
+
+footer{
+    padding:30px;
+    text-align:center;
+    color:var(--muted);
+    border-top:1px solid var(--border);
+}
+
+@media(max-width:800px){
+    .story,
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        min-height:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="container nav-inner">
+    <div class="logo">Mohamad Alzein</div>
+
+    <div class="nav-links">
+        <a href="index.html">Portfolio</a>
+        <a href="#story">Story</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#download">Download</a>
+    </div>
+</div>
+</nav>
+
+<section class="hero">
+<div class="container hero-content">
+
+    <div class="eyebrow">Personal Unity Project</div>
+
+    <h1>My Little <span style="color:var(--accent)">Aygo</span></h1>
+
+    <p>
+        A small game about a very important car.
+        After my Toyota Aygo reached 300,000 km and turned 15 years old,
+        I started wondering what I could do to preserve it after the day
+        it eventually stops driving.
+    </p>
+
+    <div class="hero-buttons">
+        <a href="#story" class="btn btn-primary">Explore the project</a>
+        <a href="index.html#projects" class="btn btn-secondary">← Back to portfolio</a>
+    </div>
+
+</div>
+</section>
+
+<section id="story">
+<div class="container">
+
+    <div class="section-title">
+        <h2>The idea</h2>
+        <p>More than just another game project.</p>
+    </div>
+
+    <div class="story">
+
+        <div class="card highlight">
+            <h3>Why I made it</h3>
+            <p>
+                My car has been with me for years. When I realized that it had
+                reached 300,000 km and was already 15 years old, I started
+                thinking about what would happen when it finally reaches the
+                end of its road.
+            </p>
+            <br>
+            <p>
+                Instead of letting the memories disappear with the car,
+                I decided to preserve it digitally. I modeled the car and
+                turned it into a Unity game that I can keep and play long
+                after the real car is gone.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>What I built</h3>
+            <p>
+                I created the car as a 3D asset and built a complete playable
+                Unity project around it. The goal was not simply to make a
+                generic driving game, but to create a digital version of
+                <em>my</em> Aygo and give it a place that can live on.
+            </p>
+
+            <div class="tech">
+                <span class="tag">Unity</span>
+                <span class="tag">C#</span>
+                <span class="tag">3D Modeling</span>
+                <span class="tag">Game Development</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<section id="gallery">
+<div class="container">
+
+    <div class="section-title">
+        <h2>Project Gallery</h2>
+        <p>
+            Ten spaces for screenshots, renders, development progress and
+            memories from the project.
+        </p>
+    </div>
+
+    <div class="gallery">
+
+        <div class="placeholder">
+            <img src="images/1.jpeg" alt="My Little Aygo — image 1" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:18px;">
+        </div>
+
+        <div class="placeholder">
+            <img src="images/2.jpeg" alt="My Little Aygo — image 2" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:18px;">
+        </div>
+
+        <div class="placeholder">
+            <img src="images/3.jpeg" alt="My Little Aygo — image 3" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:18px;">
+        </div>
+
+        <div class="placeholder">
+            <img src="images/4.png" alt="My Little Aygo — image 4" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:18px;">
+        </div>
+
+        <div class="placeholder">
+            <img src="images/5.jpeg" alt="My Little Aygo — image 5" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:18px;">
+        </div>
+
+        <div class="placeholder">
+            <img src="images/6.png" alt="My Little Aygo — image 6" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:18px;">
+        </div>
+
+        <div class="placeholder">
+            <img src="images/7.png" alt="My Little Aygo — image 7" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:18px;">
+        </div>
+
+        <div class="placeholder">
+            <img src="images/8.png" alt="My Little Aygo — image 8" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:18px;">
+        </div>
+
+    </div>
+</div>
+</section>
+
+<section>
+<div class="container">
+
+    <div class="section-title">
+        <h2>Gameplay</h2>
+        <p>A short look at My Little Aygo in action.</p>
+    </div>
+
+    <div class="video-placeholder">
+        <video
+            src="images/clip.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+            controls
+            style="width:100%; height:auto; max-height:650px; object-fit:contain; border-radius:18px; display:block;">
+            Your browser does not support the video player.
+        </video>
+    </div>
+
+</div>
+</section>
+
+<section id="download">
+<div class="container">
+
+    <div class="download">
+        <h2>Play My Little Aygo</h2>
+
+        <p>
+            Download the game and take the digital Aygo for a drive.
+            Replace the link below with the actual game download when
+            your build is ready.
+        </p>
+
+        <a href="downloads/my-little-aygo.zip" class="btn btn-primary" download>
+            ↓ Download the Game
+        </a>
+    </div>
+
+</div>
+</section>
+
+<footer>
+    © 2026 Mohamad Alzein • My Little Aygo
+</footer>
+
+</body>
+</html>
